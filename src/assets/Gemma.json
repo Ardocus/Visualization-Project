@@ -2,125 +2,104 @@
     "nodes": {
         "GemmaForClassificiation": {"name": "GemmaForClassification"},
 
-            "Model": {"name": "Model"},
-        
-                "GemmaModel": {"name": "GemmaModel"},
+        "Model": {"name": "Model"},
 
-                    "embed_tokens": {"name": "embed_tokens"},
-                        "Embedding": {"name": "Embedding"},
+        "GemmaModel": {"name": "GemmaModel"},
 
-                    "layers": {"name": "layers"},
-                        "ModuleList": {"name": "ModuleList"},
-                            "O-17": {"name": "O-17", "count": 18},
-                                "GemmaDecoderLayer": {"name": "GemmaDecoderLayer"},
+        "embed_tokens": {"name": "embed_tokens"},
+        "Embedding": {"name": "Embedding"},
 
-                                    "self_attn": {"name": "self_attn"},
-                                        "GemmaSdpaAttention" : {"name": "GemmaSdpaAttention"},
-                                            "q_proj": {"name": "q_proj"},
-                                                "linear_q": {"name": "linear"},
-                                            "k_proj": {"name": "k_proj"},
-                                                "linear_k": {"name": "linear"},
-                                            "v_proj": {"name": "v_proj"},
-                                                "linear_v": {"name": "linear"},
-                                            "o_proj": {"name": "o_proj"},
-                                                "linear_o": {"name": "linear"},
-                                            "rotary_emb": {"name": "rotary_emb"},
-                                                "GemmaRotaryEmbedding": {"name": "GemmaRotaryEmbedding"},
+        "layers": {"name": "layers"},
+        "ModuleList": {"name": "ModuleList"},
+        "O-17": {"name": "O-17", "count": 18},
+        "GemmaDecoderLayer": {"name": "GemmaDecoderLayer"},
+        "self_attn": {"name": "self_attn"},
+        "GemmaSdpaAttention" : {"name": "GemmaSdpaAttention"},
+        "q_proj": {"name": "q_proj"},
+        "linear_q": {"name": "linear"},
+        "k_proj": {"name": "k_proj"},
+        "linear_k": {"name": "linear"},
+        "v_proj": {"name": "v_proj"},
+        "linear_v": {"name": "linear"},
+        "o_proj": {"name": "o_proj"},
+        "linear_o": {"name": "linear"},
+        "rotary_emb": {"name": "rotary_emb"},
+        "GemmaRotaryEmbedding": {"name": "GemmaRotaryEmbedding"},
 
-                                    "mlp": {"name": "mlp"},
-                                        "GemmaMLP": {"name": "GemmaMLP"},
-                                            "gate_proj": {"name": "gate_proj"},
-                                                "gate_linear": {"name": "linear"},
-                                            "up_proj": {"name": "up_proj"},
-                                                "up_proj_linear": {"name": "linear"},
-                                            "down_proj": {"name": "down_proj"},
-                                                "down_proj_linear": {"name": "linear"},
-                                            "act_fn": {"name": "act_fn"},
-                                                "PytorchGELUTanh": {"name": "PytorchGELUTanh"},
+        "mlp": {"name": "mlp"},
+        "GemmaMLP": {"name": "GemmaMLP"},
+        "gate_proj": {"name": "gate_proj"},
+        "gate_linear": {"name": "linear"},
+        "up_proj": {"name": "up_proj"},
+        "up_proj_linear": {"name": "linear"},
+        "down_proj": {"name": "down_proj"},
+        "down_proj_linear": {"name": "linear"},
+        "act_fn": {"name": "act_fn"},
+        "PytorchGELUTanh": {"name": "PytorchGELUTanh"},
 
+        "input_layernorm": {"name": "input_layernorm"},
+        "GemmaRMSNorm2": {"name": "GemmaRMSNorm"},
 
-                                    "input_layernorm": {"name": "input_layernorm"},
-                                        "GemmaRMSNorm2": {"name": "GemmaRMSNorm"},
-
-                                    "post_attention_layernorm": {"name": "post_attention_layernorm"},
-                                        "GemmaRMSNorm3": {"name": "GemmaRMSNorm"},
+        "post_attention_layernorm": {"name": "post_attention_layernorm"},
+        "GemmaRMSNorm3": {"name": "GemmaRMSNorm"},
 
 
+        "norm": {"name": "norm"},
+        "GemmaRMSNorm": {"name": "GemmaRMSNorm"},
 
-
-
-                    "norm": {"name": "norm"},
-                        "GemmaRMSNorm": {"name": "GemmaRMSNorm"},
-
-            "Score": {"name": "Score"},
-                "linear": {"name": "linear"}
-        
+        "Score": {"name": "Score"},
+        "linear": {"name": "linear"}
     },
     "edges" : {
         "GemmaForClassificiation": {"source": "GemmaForClassificiation", "target": "Model"},
         "GemmaForClassification2": {"source": "GemmaForClassificiation", "target": "Score"},
 
-            "Model": {"source": "Model", "target": "GemmaModel"},
+        "Model": {"source": "Model", "target": "GemmaModel"},
 
-                "GemmaModel": {"source": "GemmaModel", "target": "embed_tokens"},
-                "GemmaMode2": {"source": "GemmaModel", "target": "layers"},
-                "GemmaMode3": {"source": "GemmaModel", "target": "norm"},
+        "GemmaModel": {"source": "GemmaModel", "target": "embed_tokens"},
+        "GemmaMode2": {"source": "GemmaModel", "target": "layers"},
+        "GemmaMode3": {"source": "GemmaModel", "target": "norm"},
 
-                    "embed_tokens": {"source": "embed_tokens", "target": "Embedding"},
-                    "layers": {"source": "layers", "target": "ModuleList"},
+        "embed_tokens": {"source": "embed_tokens", "target": "Embedding"},
+        "layers": {"source": "layers", "target": "ModuleList"},
+        "ModuleList": {"source": "ModuleList", "target": "O-17"},
+        "O-17": {"source": "O-17", "target": "GemmaDecoderLayer"},
 
-                        "ModuleList": {"source": "ModuleList", "target": "O-17"},
-                            "O-17": {"source": "O-17", "target": "GemmaDecoderLayer"},
+        "GemmaDecoderLayer": {"source": "GemmaDecoderLayer", "target": "self_attn"},
+        "GemmaDecoderLayer2": {"source": "GemmaDecoderLayer", "target": "mlp"},
+        "GemmaDecoderLayer3": {"source": "GemmaDecoderLayer", "target": "input_layernorm"},
+        "GemmaDecoderLayer4": {"source": "GemmaDecoderLayer", "target": "post_attention_layernorm"},
 
-                                "GemmaDecoderLayer": {"source": "GemmaDecoderLayer", "target": "self_attn"},
-                                "GemmaDecoderLayer2": {"source": "GemmaDecoderLayer", "target": "mlp"},
-                                "GemmaDecoderLayer3": {"source": "GemmaDecoderLayer", "target": "input_layernorm"},
-                                "GemmaDecoderLayer4": {"source": "GemmaDecoderLayer", "target": "post_attention_layernorm"},
+        "self_attn": {"source": "self_attn", "target": "GemmaSdpaAttention"},
 
-                                    "self_attn": {"source": "self_attn", "target": "GemmaSdpaAttention"},
+        "GemmaSdpaAttention": {"source": "GemmaSdpaAttention" , "target": "q_proj"},
+        "GemmaSdpaAttention2": {"source": "GemmaSdpaAttention" , "target": "k_proj"},
+        "GemmaSdpaAttention3": {"source": "GemmaSdpaAttention" , "target": "v_proj"},
+        "GemmaSdpaAttention4": {"source": "GemmaSdpaAttention" , "target": "o_proj"},
+        "GemmaSdpaAttention5": {"source": "GemmaSdpaAttention" , "target": "rotary_emb"},
 
-                                        "GemmaSdpaAttention": {"source": "GemmaSdpaAttention" , "target": "q_proj"},
-                                        "GemmaSdpaAttention2": {"source": "GemmaSdpaAttention" , "target": "k_proj"},
-                                        "GemmaSdpaAttention3": {"source": "GemmaSdpaAttention" , "target": "v_proj"},
-                                        "GemmaSdpaAttention4": {"source": "GemmaSdpaAttention" , "target": "o_proj"},
-                                        "GemmaSdpaAttention5": {"source": "GemmaSdpaAttention" , "target": "rotary_emb"},
+        "q_proj": {"source": "q_proj", "target": "linear_q"},
+        "k_proj": {"source": "k_proj", "target": "linear_k"},
+        "v_proj": {"source": "v_proj", "target": "linear_v"},
+        "o_proj": {"source": "o_proj", "target": "linear_o"},
 
-                                            "q_proj": {"source": "q_proj", "target": "linear_q"},
-                                                "linear_q": [],
-                                            "k_proj": {"source": "k_proj", "target": "linear_k"},
-                                                "linear_k": [],
-                                            "v_proj": {"source": "v_proj", "target": "linear_v"},
-                                                "linear_v": [],
-                                            "o_proj": {"source": "o_proj", "target": "linear_o"},
-                                                "linear_o": [],
-                                            "rotary_emb": {"source": "rotary_emb", "target": "GemmaRotaryEmbedding"},
-                                                "GemmaRotaryEmbedding": [],
+        "rotary_emb": {"source": "rotary_emb", "target": "GemmaRotaryEmbedding"},
+        "mlp": {"source": "mlp", "target": "GemmaMLP"},
 
-                                    "mlp": {"source": "mlp", "target": "GemmaMLP"},
+        "GemmaMLP": {"source": "GemmaMLP", "target": "gate_proj"},
+        "GemmaMLP2": {"source": "GemmaMLP", "target": "up_proj"},
+        "GemmaMLP3": {"source": "GemmaMLP", "target": "down_proj"},
+        "GemmaMLP4": {"source": "GemmaMLP", "target": "act_fn"},
 
-                                        "GemmaMLP": {"source": "GemmaMLP", "target": "gate_proj"},
-                                        "GemmaMLP2": {"source": "GemmaMLP", "target": "up_proj"},
-                                        "GemmaMLP3": {"source": "GemmaMLP", "target": "down_proj"},
-                                        "GemmaMLP4": {"source": "GemmaMLP", "target": "act_fn"},
+        "gate_proj": {"source": "gate_proj", "target": "gate_linear"},
+        "up_proj": {"source": "up_proj", "target": "up_proj_linear"},
+        "down_proj": {"source": "down_proj", "target": "down_proj_linear"},
+        "act_fn": {"source": "act_fn", "target": "PytorchGELUTanh"},
 
-                                            "gate_proj": {"source": "gate_proj", "target": "gate_linear"},
-                                                "gate_linear": [],
-                                            "up_proj": {"source": "up_proj", "target": "up_proj_linear"},
-                                                "up_proj_linear": [],
-                                            "down_proj": {"source": "down_proj", "target": "down_proj_linear"},
-                                                "down_proj_linear": [],
-                                            "act_fn": {"source": "act_fn", "target": "PytorchGELUTanh"},
-                                                "PytorchGELUTanh": [],
-                                    "input_layernorm": {"source": "input_layernorm", "target": "GemmaRMSNorm2"},
-                                        "GemmaRMSNorm2": [],
-                                    "post_attention_layernorm": {"source": "post_attention_layernorm", "target": "GemmaRMSNorm3"},
-                                        "GemmaRMSNorm3": [],
-
-                    "norm": {"source": "norm", "target": "GemmaRMSNorm"},
-                        "GemmaRMSNorm": [],
-
-            "Score": {"source": "Score", "target": "linear"},
-                "linear": []
+        "input_layernorm": {"source": "input_layernorm", "target": "GemmaRMSNorm2"},
+        "post_attention_layernorm": {"source": "post_attention_layernorm", "target": "GemmaRMSNorm3"},
+        
+        "norm": {"source": "norm", "target": "GemmaRMSNorm"},
+        "Score": {"source": "Score", "target": "linear"}
     }
-   
 }
