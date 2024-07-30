@@ -1,14 +1,10 @@
 {
     "nodes": {
         "GemmaForClassificiation": {"name": "GemmaForClassification"},
-
         "Model": {"name": "Model"},
-
         "GemmaModel": {"name": "GemmaModel"},
-
         "embed_tokens": {"name": "embed_tokens"},
         "Embedding": {"name": "Embedding"},
-
         "layers": {"name": "layers"},
         "ModuleList": {"name": "ModuleList"},
         "O-17": {"name": "O-17", "count": 18},
@@ -25,7 +21,6 @@
         "linear_o": {"name": "linear"},
         "rotary_emb": {"name": "rotary_emb"},
         "GemmaRotaryEmbedding": {"name": "GemmaRotaryEmbedding"},
-
         "mlp": {"name": "mlp"},
         "GemmaMLP": {"name": "GemmaMLP"},
         "gate_proj": {"name": "gate_proj"},
@@ -36,70 +31,96 @@
         "down_proj_linear": {"name": "linear"},
         "act_fn": {"name": "act_fn"},
         "PytorchGELUTanh": {"name": "PytorchGELUTanh"},
-
         "input_layernorm": {"name": "input_layernorm"},
         "GemmaRMSNorm2": {"name": "GemmaRMSNorm"},
-
         "post_attention_layernorm": {"name": "post_attention_layernorm"},
         "GemmaRMSNorm3": {"name": "GemmaRMSNorm"},
-
-
         "norm": {"name": "norm"},
         "GemmaRMSNorm": {"name": "GemmaRMSNorm"},
-
         "Score": {"name": "Score"},
         "linear": {"name": "linear"}
     },
     "edges" : {
         "GemmaForClassificiation": {"source": "GemmaForClassificiation", "target": "Model"},
         "GemmaForClassification2": {"source": "GemmaForClassificiation", "target": "Score"},
-
         "Model": {"source": "Model", "target": "GemmaModel"},
-
         "GemmaModel": {"source": "GemmaModel", "target": "embed_tokens"},
         "GemmaMode2": {"source": "GemmaModel", "target": "layers"},
         "GemmaMode3": {"source": "GemmaModel", "target": "norm"},
-
         "embed_tokens": {"source": "embed_tokens", "target": "Embedding"},
         "layers": {"source": "layers", "target": "ModuleList"},
         "ModuleList": {"source": "ModuleList", "target": "O-17"},
         "O-17": {"source": "O-17", "target": "GemmaDecoderLayer"},
-
         "GemmaDecoderLayer": {"source": "GemmaDecoderLayer", "target": "self_attn"},
         "GemmaDecoderLayer2": {"source": "GemmaDecoderLayer", "target": "mlp"},
         "GemmaDecoderLayer3": {"source": "GemmaDecoderLayer", "target": "input_layernorm"},
         "GemmaDecoderLayer4": {"source": "GemmaDecoderLayer", "target": "post_attention_layernorm"},
-
         "self_attn": {"source": "self_attn", "target": "GemmaSdpaAttention"},
-
         "GemmaSdpaAttention": {"source": "GemmaSdpaAttention" , "target": "q_proj"},
         "GemmaSdpaAttention2": {"source": "GemmaSdpaAttention" , "target": "k_proj"},
         "GemmaSdpaAttention3": {"source": "GemmaSdpaAttention" , "target": "v_proj"},
         "GemmaSdpaAttention4": {"source": "GemmaSdpaAttention" , "target": "o_proj"},
         "GemmaSdpaAttention5": {"source": "GemmaSdpaAttention" , "target": "rotary_emb"},
-
         "q_proj": {"source": "q_proj", "target": "linear_q"},
         "k_proj": {"source": "k_proj", "target": "linear_k"},
         "v_proj": {"source": "v_proj", "target": "linear_v"},
         "o_proj": {"source": "o_proj", "target": "linear_o"},
-
         "rotary_emb": {"source": "rotary_emb", "target": "GemmaRotaryEmbedding"},
         "mlp": {"source": "mlp", "target": "GemmaMLP"},
-
         "GemmaMLP": {"source": "GemmaMLP", "target": "gate_proj"},
         "GemmaMLP2": {"source": "GemmaMLP", "target": "up_proj"},
         "GemmaMLP3": {"source": "GemmaMLP", "target": "down_proj"},
         "GemmaMLP4": {"source": "GemmaMLP", "target": "act_fn"},
-
         "gate_proj": {"source": "gate_proj", "target": "gate_linear"},
         "up_proj": {"source": "up_proj", "target": "up_proj_linear"},
         "down_proj": {"source": "down_proj", "target": "down_proj_linear"},
         "act_fn": {"source": "act_fn", "target": "PytorchGELUTanh"},
-
         "input_layernorm": {"source": "input_layernorm", "target": "GemmaRMSNorm2"},
         "post_attention_layernorm": {"source": "post_attention_layernorm", "target": "GemmaRMSNorm3"},
-        
         "norm": {"source": "norm", "target": "GemmaRMSNorm"},
         "Score": {"source": "Score", "target": "linear"}
+    },
+    "layouts": {
+        "nodes": {
+        "GemmaForClassification": { "x": 0, "y": 0},
+        "Model": { "x": 0, "y": 100 },
+        "GemmaModel": { "x": 0, "y": 200 },
+        "embed_tokens": { "x": -400, "y": 300 },
+        "Embedding": { "x": -400, "y": 400 },
+        "layers": { "x": 400, "y": 300 },
+        "ModuleList": { "x": 400, "y": 400 },
+        "O-17": { "x": 400, "y": 500 },
+        "GemmaDecoderLayer": { "x": 400, "y": 600 },
+        "self_attn": { "x": -200, "y": 700 },
+        "GemmaSdpaAttention": { "x": -200, "y": 800 },
+        "q_proj": { "x": -600, "y": 900 },
+        "linear_q": { "x": -600, "y": 1000 },
+        "k_proj": { "x": -200, "y": 900 },
+        "linear_k": { "x": -200, "y": 1000 },
+        "v_proj": { "x": 200, "y": 900 },
+        "linear_v": { "x": 200, "y": 1000 },
+        "o_proj": { "x": 600, "y": 900 },
+        "linear_o": { "x": 600, "y": 1000 },
+        "rotary_emb": { "x": -200, "y": 1100 },
+        "GemmaRotaryEmbedding": { "x": -200, "y": 1200 },
+        "mlp": { "x": 400, "y": 700 },
+        "GemmaMLP": { "x": 400, "y": 800 },
+        "gate_proj": { "x": 200, "y": 900 },
+        "gate_linear": { "x": 200, "y": 1000 },
+        "up_proj": { "x": 600, "y": 900 },
+        "up_proj_linear": { "x": 600, "y": 1000 },
+        "down_proj": { "x": 1000, "y": 900 },
+        "down_proj_linear": { "x": 1000, "y": 1000 },
+        "act_fn": { "x": 1400, "y": 900 },
+        "PytorchGELUTanh": { "x": 1400, "y": 1000 },
+        "input_layernorm": { "x": -600, "y": 700 },
+        "GemmaRMSNorm2": { "x": -600, "y": 800 },
+        "post_attention_layernorm": { "x": 0, "y": 700 },
+        "GemmaRMSNorm3": { "x": 0, "y": 800 },
+        "norm": { "x": 0, "y": 1300 },
+        "GemmaRMSNorm": { "x": 0, "y": 1400 },
+        "Score": { "x": -400, "y": 100 },
+        "linear": { "x": -400, "y": 200 }
+    }
     }
 }
