@@ -116,6 +116,7 @@ console.log(props.width)
 <template>
   <div class="dnd-flow" @drop="onDrop" >
   <VueFlow
+    class="dnd-flow"
     v-model:nodes="nodes"
     v-model:edges="edges"
     :class="{ dark }"

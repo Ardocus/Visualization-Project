@@ -63,8 +63,59 @@ body,
     .dnd-flow aside {
         min-width: 10%
     }
+}
 
+.dnd-flow.dark {
+    background: #2d3748;
+    color: #fffffb
+}
 
+.dnd-flow.dark .vue-flow__node {
+    background: #4a5568;
+    color: #fffffb
+}
+
+.dnd-flow.dark .vue-flow__node.selected {
+    background: #333;
+    box-shadow: 0 0 0 2px #2563eb
+}
+
+.dnd-flow .vue-flow__controls {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center
+}
+
+.dnd-flow.dark .vue-flow__controls {
+    border: 1px solid #FFFFFB
+}
+
+.dnd-flow .vue-flow__controls .vue-flow__controls-button {
+    border: none;
+    border-right: 1px solid #eee
+}
+
+.dnd-flow .vue-flow__controls .vue-flow__controls-button svg {
+    height: 100%;
+    width: 100%
+}
+
+.dnd-flow.dark .vue-flow__controls .vue-flow__controls-button {
+    background: #333;
+    fill: #fffffb;
+    border: none
+}
+
+.dnd-flow.dark .vue-flow__controls .vue-flow__controls-button:hover {
+    background: #4d4d4d
+}
+
+.dnd-flow.dark .vue-flow__edge-textbg {
+    fill: #292524
+}
+
+.dnd-flow.dark .vue-flow__edge-text {
+    fill: #fffffb
 }
 
 @media screen and (max-width: 639px) {
