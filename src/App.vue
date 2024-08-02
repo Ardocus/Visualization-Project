@@ -1,23 +1,10 @@
 <template>
-  <div id="app">
-    <TreeView :data="gemmaData" />
-  </div>
+    <Graph :width="width" :height="height"/>
 </template>
 
 <script setup>
-import TreeView from './components/TreeView.vue'
-import gemmaData from '/src/assets/Gemma.json'
-import llamaData from '/src/assets/Llama.json'
+import Graph from './Graph.vue'
 
-
+const width = 1200
+const height = 600
 </script>
-
-<style>
-#app {
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-</style>
